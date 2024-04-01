@@ -1,0 +1,13 @@
+.nav {
+  background: #292929;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin: 1vh 3vw;
+}
+
+.nav-link:hover {
+  color: #E0E0E0;
+}

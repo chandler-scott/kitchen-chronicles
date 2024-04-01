@@ -2,20 +2,16 @@
 
 # Define the app directory
 APP_DIR="/app/kitchen-chronicles"
+SSL_DIR="/etc/nginx/ssl"
 
-# Step 1: Build the React App
-echo "Building the React app..."
-cd kitchen-chronicles
-npm install
-npm run build
+./build.sh
 
-# Ensure the app directory exists
-sudo mkdir -p $APP_DIR
-
-# Copy the build directory to the desired app directory
-sudo cp -R build/* $APP_DIR
-
-# Step 2: Install Nginx if it's not installed
+read -p "Do you want to generate SSL certificates? (y/n): " SETUP_CERT
+if [[ $SETUP_CERT == "y" ]]; then
+   echo "Generating certs!"
+   ./generate_cert.sh
+fi
+# Install Nginx if it's not installed
 if ! [ -x "$(command -v nginx)" ]; then
   echo "Nginx is not installed. Installing Nginx."
   sudo apt-get update
@@ -29,14 +25,7 @@ fi
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
-# Step 3: Generate Self-Signed SSL Certificate
-SSL_DIR="/etc/nginx/ssl"
-sudo mkdir -p $SSL_DIR
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -keyout $SSL_DIR/athena.local.key -out $SSL_DIR/athena.local.crt \
-    -subj "/C=US/ST=Tennessee/L=Johnson City/O=chandler-scott/CN=athena.local"
-
-# Step 4: Configure Nginx to Serve the React App over HTTPS
+# Configure Nginx to Serve the React App over HTTPS
 # Backup the original Nginx default configuration
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 

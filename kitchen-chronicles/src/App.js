@@ -1,21 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router} from "react-router-dom";
 import './App.css';
+import Header from './Header.js'
+import Content from './Content.js'
 
 function App() {
   return (
-    <div className="App">
-      <header className="header c-flex-box">
-        <div className="r-flex-box">
-            <img className="icon" src="./icon.png"/>
-            <p>
-                Kitchen Chronicles
-            </p>
-        </div>
-      </header>
-      <div className="content c-flex-box"> hi </div>
-      <footer className="footer c-flex-box"> Copyright ©chandler-scott </footer>
-    </div>
+    <Router>
+      <div className="App">
+        <Header/>
+        <Content/>
+        <footer className="footer c-flex-box"> Copyright ©chandler-scott </footer>
+      </div>
+    </Router>
   );
 }
 

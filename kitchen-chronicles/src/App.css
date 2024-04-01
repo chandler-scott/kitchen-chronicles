@@ -10,15 +10,13 @@
 }
 
 .icon {
-   height: 5vh;
-   width: 5vh;
-   margin: 0 20px 0 0;
+   height: 6vh;
+   margin: 10px 20px;
 }
 
 .header {
   min-height: 5vh;
-  font-size: calc(14px + 2vmin);
-  border-bottom: 1px #787676 solid;
+  border-bottom: 1px #585656 solid;
 }
 
 .content {
@@ -34,7 +32,7 @@
 
 .footer {
   height: 20px;
-  border-top: 1px #787676 solid;
+  border-top: 1px #585656 solid;
   padding: 0 20px;
   align-items: end;
   font-size: calc(4px + 1vmin);

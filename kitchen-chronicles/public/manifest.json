@@ -10,7 +10,8 @@
     {
       "src": "icon.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "maskable"
     },
     {
       "src": "icon.png",
@@ -20,6 +21,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
+  "scope": ".",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
